@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventOfCode3
+namespace AdventHelper
 {
-    internal static class BackpackManager
+    public static class PuzzleInputManager
     {
-        internal static async Task<List<string>> LoadBackpack(string path)
+        public static async Task<List<string>> LoadPuzzleText(string path)
         {
             List<string> backpacks = new();
             using (StreamReader reader = new StreamReader(path))
