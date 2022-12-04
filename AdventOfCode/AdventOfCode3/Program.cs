@@ -11,7 +11,7 @@ namespace AdventOfCode3
         const int lowercaseAdjust = 'a' - 1;
         const int uppercaseAdjust = 'A' - 27;
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             List<string> backpacks = PuzzleInputManager.LoadPuzzleText("Inputs/PuzzleInput3.txt").Result;
             Console.WriteLine("\n\nDay 3:");
@@ -19,12 +19,12 @@ namespace AdventOfCode3
             Stopwatch stopwatch = Stopwatch.StartNew();
             Console.WriteLine($"Priority sum was: {Part1(backpacks)}");
             stopwatch.Stop();
-            Console.WriteLine($"Execution time: {stopwatch.Elapsed.TotalSeconds}s ({stopwatch.ElapsedTicks} ticks).");
+            Console.WriteLine($"Execution time: {stopwatch.ElapsedMilliseconds}ms ({stopwatch.ElapsedTicks} ticks).");
             Console.WriteLine("\n======Part 2======");
             stopwatch = Stopwatch.StartNew();
             Console.WriteLine($"Priority sum was: {Part2(backpacks)}");
             stopwatch.Stop();
-            Console.WriteLine($"Execution time: {stopwatch.Elapsed.TotalSeconds}s ({stopwatch.ElapsedTicks} ticks).");
+            Console.WriteLine($"Execution time: {stopwatch.ElapsedMilliseconds}ms ({stopwatch.ElapsedTicks} ticks).");
         }
 
         static string Part2(List<string> backpacks)

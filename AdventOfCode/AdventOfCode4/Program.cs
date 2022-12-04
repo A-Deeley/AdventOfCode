@@ -15,12 +15,12 @@ namespace AdventOfCode4
             Stopwatch stopwatch = Stopwatch.StartNew();
             Console.WriteLine($"Sum of sections containing the other section was: {Part1(sectionPairs)}");
             stopwatch.Stop();
-            Console.WriteLine($"Execution time: {stopwatch.Elapsed.TotalSeconds}s ({stopwatch.ElapsedTicks} ticks).");
+            Console.WriteLine($"Execution time: {stopwatch.ElapsedMilliseconds}ms ({stopwatch.ElapsedTicks} ticks).");
             Console.WriteLine("======Part 2======");
             stopwatch = Stopwatch.StartNew();
             Console.WriteLine($"Sum of overlapping sections was: {Part2(sectionPairs)}");
             stopwatch.Stop();
-            Console.WriteLine($"Execution time: {stopwatch.Elapsed.TotalSeconds}s ({stopwatch.ElapsedTicks} ticks).");
+            Console.WriteLine($"Execution time: {stopwatch.ElapsedMilliseconds}ms ({stopwatch.ElapsedTicks} ticks).");
         }
 		
 		static string Part1(List<string> sectionPairs)

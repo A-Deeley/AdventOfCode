@@ -8,16 +8,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AdventOfCode1\AdventOfCode1.csproj" />
     <ProjectReference Include="..\AdventOfCode2\AdventOfCode2.csproj" />
     <ProjectReference Include="..\AdventOfCode3\AdventOfCode3.csproj" />
     <ProjectReference Include="..\AdventOfCode4\AdventOfCode4.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Inputs\PuzzleInput3.txt">
+    <None Update="Inputs\Day2.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Inputs\PuzzleInput4.txt">
+    <None Update="Inputs\Day1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Inputs\Day3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Inputs\Day4.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
