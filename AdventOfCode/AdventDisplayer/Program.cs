@@ -10,7 +10,7 @@ namespace AdventDisplayer
         {
             long totalExecutionTime = 0;
             int daysFromStart = DateTime.Today.Day;
-            daysFromStart = 1;
+            daysFromStart = 2;
             AdventOfCodeList days = new(daysFromStart);
 
             // Load puzzle inputs
@@ -21,6 +21,7 @@ namespace AdventDisplayer
 
 
             days.Add(new Day1(puzzleInputs[0]));
+            days.Add(new Day2(puzzleInputs[1]));
 
 
             await days.ComputeAll();
@@ -39,13 +40,13 @@ namespace AdventDisplayer
                 int p1Length = p1Desc.Length + p1Ans.Length;
                 int p2Length = p2Desc.Length + p2Ans.Length;
                 string execTimeText = $"Execution time: ";
-                string ms = days[currentDay].GetTimeMilliseconds;
-                string execTimeValue = $"{}ms ({days[currentDay].GetTimeTicks} ticks).";
+                string execTimeMs = $"{days[currentDay].ExecTimer.ElapsedMilliseconds}ms";
+                string execTimeTicks = $" ({days[currentDay].ExecTimer.ElapsedTicks} ticks)";
                 int biggestLength = Math.Max(p1Length, p2Length) + Math.Min(p1Ans.Length, p2Ans.Length);
                 bool isP1Bigger = p1Length > p2Length;
                 string title = $"Day {(dayNo < 10 ? $" {dayNo}" : dayNo)}";
                 title = title.PadLeft(biggestLength / 2, '-');
-                title = title.PadRight((biggestLength / 2) + title.Length, '-');
+                title = title.PadRight((biggestLength / 2 % 2 == 1 ? biggestLength / 2 : biggestLength / 2 + 1) + title.Length, '-');
                 Console.WriteLine(title);
                 if (isP1Bigger)
                 {
@@ -72,8 +73,11 @@ namespace AdventDisplayer
                     Console.WriteLine(" |");
                 }
                 Console.Write("| ");
+                int execLength = execTimeMs.Length + execTimeText.Length + execTimeTicks.Length;
                 ChristmasConsole.Write(execTimeText, ConsoleColor.Green);
-                ChristmasConsole.Write(execTimeValue.PadRight(biggestLength - 4), ConsoleColor.Red);
+                ChristmasConsole.Write(execTimeMs, ConsoleColor.Red);
+                ChristmasConsole.Write(execTimeTicks, ConsoleColor.Green);
+                ChristmasConsole.Write(".".PadRight((biggestLength - execLength) > (0 + 4) ? biggestLength - execLength - 4 : 0), ConsoleColor.Red);
                 Console.WriteLine(" |");
                 Console.WriteLine("".PadLeft(biggestLength, '-'));
                 Console.WriteLine();

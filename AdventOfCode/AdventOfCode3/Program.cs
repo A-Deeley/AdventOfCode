@@ -1,15 +1,10 @@
 ﻿using AdventHelper;
-using System.Collections;
 using System.Diagnostics;
-using System.Diagnostics.Metrics;
-using System.Net;
 
 namespace AdventOfCode3
 {
     public class Program
     {
-        const int lowercaseAdjust = 'a' - 1;
-        const int uppercaseAdjust = 'A' - 27;
 
         public static async Task Main(string[] args)
         {
@@ -35,11 +30,11 @@ namespace AdventOfCode3
             do
             {
                 List<int[]> groupBps = new()
-        {
-            new int[52],
-            new int[52],
-            new int[52]
-        };
+                {
+                    new int[52],
+                    new int[52],
+                    new int[52]
+                };
 
 
                 for (int i = 0; i < 3; i++)

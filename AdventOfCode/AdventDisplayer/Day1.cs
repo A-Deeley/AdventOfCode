@@ -18,7 +18,7 @@ namespace AdventDisplayer
 
         public override async Task Start()
         {
-            _execTimer.Start();
+            ExecTimer.Start();
             var data = await _input;
             List<string> elfCalories = new(data.Split('\n'));
 
@@ -40,7 +40,7 @@ namespace AdventDisplayer
             Part1Answer = elvesOrderedByCalories[0].TotalCalories;
             Part2Answer = elvesOrderedByCalories[0..3].Sum(elf => elf.TotalCalories);
 
-            _execTimer.Stop();
+            ExecTimer.Stop();
         }
 
         struct Elf

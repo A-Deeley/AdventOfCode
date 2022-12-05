@@ -9,7 +9,7 @@ namespace AdventDisplayer
 {
     internal abstract class AdventOfCodeDay
     {
-        protected Stopwatch _execTimer;
+        public Stopwatch ExecTimer { get; protected set; }
 
         public virtual object Part1Answer { get; protected set; }
         public virtual object Part2Answer { get; protected set; }
@@ -18,11 +18,8 @@ namespace AdventDisplayer
 
         public AdventOfCodeDay()
         {
-            _execTimer = new();
+            ExecTimer = new();
         }
-
-        public long GetTimeMilliseconds() => _execTimer.ElapsedMilliseconds;
-        public long GetTimeTicks() => _execTimer.ElapsedTicks;
         public abstract Task Start();
     }
 }

@@ -17,7 +17,7 @@ namespace AdventHelper
             while (!reader.EndOfStream)
                 builder.Append($"{await reader.ReadLineAsync()}\n" ?? "\n");
 
-
+            builder.Remove(builder.Length - 1, 1);
             return builder.ToString();
         }
 
