@@ -18,14 +18,17 @@ namespace AdventDisplayer
             List<Task<string>> puzzleInputs = PuzzleInputManager.GetAllPuzzlesAsync(daysFromStart);
             watch.Stop();
             long totalFileOpTime = watch.ElapsedMilliseconds;
-
+            Stopwatch day5OverrideTime = Stopwatch.StartNew();
+            var day5Crates = PuzzleInputManager.Day5_GetCrates(puzzleInputs[4]);
+            var day5Moves = PuzzleInputManager.Day5_GetMoves(puzzleInputs[4]);
+            day5OverrideTime.Stop();
 
             days.Add(new Day1(puzzleInputs[0]));
             days.Add(new Day2(puzzleInputs[1]));
             days.Add(new Day3(puzzleInputs[2]));
             days.Add(new Day4(puzzleInputs[3]));
-
-            var day5 = await PuzzleInputManager.ComputeDay5(puzzleInputs[4]);
+            days.Add(new Day5(day5Crates, day5Moves));
+            days.Last().ExecTimer = day5OverrideTime;
 
 
             await days.ComputeAll();
@@ -47,7 +50,7 @@ namespace AdventDisplayer
                 string execTimeMs = $"{days[currentDay].ExecTimer.ElapsedMilliseconds}ms";
                 string execTimeTicks = $" ({days[currentDay].ExecTimer.ElapsedTicks} ticks)";
                 int biggestLength = Math.Max(p1Length, p2Length) + Math.Min(p1Ans.Length, p2Ans.Length);
-                bool isP1Bigger = p1Length > p2Length;
+                bool isP1Bigger = p1Length + p1Ans.Length > p2Length + p2Ans.Length;
                 string title = $"Day {(dayNo < 10 ? $" {dayNo}" : dayNo)}";
                 title = title.PadLeft(biggestLength / 2, '-');
                 title = title.PadRight((biggestLength / 2 % 2 == 1 ? biggestLength / 2 : biggestLength / 2 + 1) + title.Length, '-');

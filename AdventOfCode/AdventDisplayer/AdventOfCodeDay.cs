@@ -9,7 +9,7 @@ namespace AdventDisplayer
 {
     internal abstract class AdventOfCodeDay
     {
-        public Stopwatch ExecTimer { get; protected set; }
+        public Stopwatch ExecTimer { get; set; }
 
         public virtual object Part1Answer { get; protected set; }
         public virtual object Part2Answer { get; protected set; }
