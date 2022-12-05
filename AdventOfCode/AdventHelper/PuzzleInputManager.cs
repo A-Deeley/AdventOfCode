@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,16 +9,27 @@ namespace AdventHelper
 {
     public static class PuzzleInputManager
     {
-        public static async Task<List<string>> LoadPuzzleText(string path)
+        static async Task<string> LoadPuzzleTextAsync(string path)
         {
-            List<string> backpacks = new();
-            using (StreamReader reader = new StreamReader(path))
+            StringBuilder builder = new();
+            using StreamReader reader = new StreamReader($"Inputs/{path}");
+            
+            while (!reader.EndOfStream)
+                builder.Append($"{await reader.ReadLineAsync()}\n" ?? "\n");
+
+
+            return builder.ToString();
+        }
+
+        public static List<Task<string>> GetAllPuzzlesAsync(int quantity)
+        {
+            List<Task<string>> tasks = new(quantity);
+            for (int i = 0; i < quantity; i++)
             {
-                while (!reader.EndOfStream)
-                    backpacks.Add(await reader.ReadLineAsync() ?? "");
+                tasks.Add(LoadPuzzleTextAsync($"Day{i + 1}.txt"));
             }
 
-            return backpacks;
+            return tasks;
         }
     }
 }
