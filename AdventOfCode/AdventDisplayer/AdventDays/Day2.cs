@@ -1,4 +1,4 @@
-﻿namespace AdventDisplayer
+﻿namespace AdventDisplayer.AdventDays
 {
     internal class Day2 : Day<string>
     {
@@ -17,7 +17,7 @@
         }
 
         public Day2(Task<string> task)
-            : base(task) 
+            : base(task)
         {
             Part1Description = "Total score of assumed guide";
             Part2Description = "Total score of actual guide";
@@ -41,14 +41,14 @@
             foreach (var pair in RPSPairs)
             {
                 // P2 wins (nous)
-                if ((pair.P1 - ABCAdjust + 1) % 3 == (pair.P2 - XYZAdjust))
-                    totalScore += (pair.P2 - XYZAdjust) + 6;
+                if ((pair.P1 - ABCAdjust + 1) % 3 == pair.P2 - XYZAdjust)
+                    totalScore += pair.P2 - XYZAdjust + 6;
                 // draw
-                else if ((pair.P1 - ABCAdjust) == (pair.P2 - XYZAdjust))
-                    totalScore += (pair.P2 - XYZAdjust) + 3;
+                else if (pair.P1 - ABCAdjust == pair.P2 - XYZAdjust)
+                    totalScore += pair.P2 - XYZAdjust + 3;
                 // P1 wins
                 else
-                    totalScore += (pair.P2 - XYZAdjust);
+                    totalScore += pair.P2 - XYZAdjust;
             }
 
             totalScore += RPSPairs.Count;

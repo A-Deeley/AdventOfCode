@@ -31,5 +31,20 @@ namespace AdventHelper
 
             return tasks;
         }
+
+        public static async Task<Dictionary<int, Stack<char>>> ComputeDay5(Task<string> rawInput)
+        {
+            var data = await rawInput;
+            string[] lines = data.Split('\n');
+            int index = 0;
+            List<string> containers= new List<string>();
+            do
+            {
+
+            } while (!int.TryParse(lines[index], out _));
+            Dictionary<int, Stack<char>> stacks = new();
+
+            return stacks;
+        }
     }
 }

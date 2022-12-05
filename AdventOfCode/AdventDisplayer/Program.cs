@@ -1,4 +1,5 @@
-﻿using AdventHelper;
+﻿using AdventDisplayer.AdventDays;
+using AdventHelper;
 using System;
 using System.Diagnostics;
 
@@ -10,7 +11,6 @@ namespace AdventDisplayer
         {
             long totalExecutionTime = 0;
             int daysFromStart = DateTime.Today.Day;
-            daysFromStart = 2;
             AdventOfCodeList days = new(daysFromStart);
 
             // Load puzzle inputs
@@ -22,6 +22,10 @@ namespace AdventDisplayer
 
             days.Add(new Day1(puzzleInputs[0]));
             days.Add(new Day2(puzzleInputs[1]));
+            days.Add(new Day3(puzzleInputs[2]));
+            days.Add(new Day4(puzzleInputs[3]));
+
+            var day5 = await PuzzleInputManager.ComputeDay5(puzzleInputs[4]);
 
 
             await days.ComputeAll();

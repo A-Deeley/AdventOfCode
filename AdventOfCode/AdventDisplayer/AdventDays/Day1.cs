@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventDisplayer
+namespace AdventDisplayer.AdventDays
 {
     internal sealed class Day1 : Day<string>
     {
         public Day1(Task<string> input)
-            : base(input) 
+            : base(input)
         {
             Part1Description = "Calories carried by the elf carrying the most calories";
             Part2Description = "The sum of calories carried by the top 3 elves";
