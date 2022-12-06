@@ -24,13 +24,16 @@ namespace AdventDisplayer.AdventDays
             _moves = await (Task<List<(int, int, int)>>)_moveTask;
             Dictionary<int, Stack<char>> crateStacksInitialSim = CopyCrateConfiguration(await _input);
 
-
+            int movesRemaining = _moves.Count;
             foreach (var move in _moves)
+            {
+                movesRemaining--;
                 for (int qtyCrates = 0; qtyCrates < move.qty; qtyCrates++)
                 {
                     char crate = crateStacksInitialSim[move.source].Pop();
                     crateStacksInitialSim[move.dest].Push(crate);
                 }
+            }
 
             StringBuilder builder = new();
             foreach (var crateStack in crateStacksInitialSim)

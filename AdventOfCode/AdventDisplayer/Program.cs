@@ -27,8 +27,10 @@ namespace AdventDisplayer
             days.Add(new Day2(puzzleInputs[1]));
             days.Add(new Day3(puzzleInputs[2]));
             days.Add(new Day4(puzzleInputs[3]));
-            days.Add(new Day5(day5Crates, day5Moves));
-            days.Last().ExecTimer = day5OverrideTime;
+            var day5Special = new Day5(day5Crates, day5Moves);
+            day5Special.ExecTimer = day5OverrideTime;
+            days.Add(day5Special);
+            days.Add(new Day6(puzzleInputs[5]));
 
 
             await days.ComputeAll();
@@ -47,7 +49,7 @@ namespace AdventDisplayer
                 int p1Length = p1Desc.Length + p1Ans.Length;
                 int p2Length = p2Desc.Length + p2Ans.Length;
                 string execTimeText = $"Execution time: ";
-                string execTimeMs = $"{days[currentDay].ExecTimer.ElapsedMilliseconds}ms";
+                string execTimeMs = $"{days[currentDay].ExecTimer.Elapsed.TotalSeconds}s ({days[currentDay].ExecTimer.ElapsedMilliseconds}ms)";
                 string execTimeTicks = $" ({days[currentDay].ExecTimer.ElapsedTicks} ticks)";
                 int biggestLength = Math.Max(p1Length, p2Length) + Math.Min(p1Ans.Length, p2Ans.Length);
                 bool isP1Bigger = p1Length + p1Ans.Length > p2Length + p2Ans.Length;

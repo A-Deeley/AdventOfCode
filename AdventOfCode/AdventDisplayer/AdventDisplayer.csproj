@@ -21,6 +21,12 @@
     <None Update="Inputs\Day3.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Inputs\Day6.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Inputs\Day5_6mb.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Inputs\Day5.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

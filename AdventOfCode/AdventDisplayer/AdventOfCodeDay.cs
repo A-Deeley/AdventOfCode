@@ -19,6 +19,8 @@ namespace AdventDisplayer
         public AdventOfCodeDay()
         {
             ExecTimer = new();
+            Part2Description = "";
+            Part2Answer = "";
         }
         public abstract Task Start();
     }
