@@ -31,6 +31,7 @@ namespace AdventDisplayer
             day5Special.ExecTimer = day5OverrideTime;
             days.Add(day5Special);
             days.Add(new Day6(puzzleInputs[5]));
+            days.Add(new Day7(puzzleInputs[6]));
 
 
             await days.ComputeAll();
