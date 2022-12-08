@@ -91,5 +91,23 @@ namespace AdventHelper
 
             return moves;
         }
+
+        public static async Task<int[][]> Day8_GetTrees(Task<string> rawInput)
+        {
+            string input = await rawInput;
+            string[] inputLines = input.Split('\n');
+            int[][] treeGrid = new int[inputLines[0].Length][];
+
+            for (int row = 0; row < inputLines.Length; row++)
+            {
+                treeGrid[row] = new int[inputLines[row].Length];
+                for (int col = 0; col < inputLines[row].Length; col++)
+                {
+                    treeGrid[row][col] = inputLines[row][col] - 48;
+                }
+            }
+
+            return treeGrid;
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventDisplayer.AdventDays.Day7Classes
+namespace AdventDisplayer.AdventDays.Day7_
 {
     internal class File : IFileSystemObject
     {

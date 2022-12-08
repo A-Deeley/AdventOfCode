@@ -1,6 +1,7 @@
 ﻿using AdventDisplayer.AdventDays;
+using AdventDisplayer.AdventDays.Day7_;
+using AdventDisplayer.AdventDays.Day8_;
 using AdventHelper;
-using System;
 using System.Diagnostics;
 
 namespace AdventDisplayer
@@ -23,6 +24,10 @@ namespace AdventDisplayer
             var day5Moves = PuzzleInputManager.Day5_GetMoves(puzzleInputs[4]);
             day5OverrideTime.Stop();
 
+            Stopwatch day8OverrideTime = Stopwatch.StartNew();
+            var day8Trees = PuzzleInputManager.Day8_GetTrees(puzzleInputs[7]);
+            day8OverrideTime.Stop();
+
             days.Add(new Day1(puzzleInputs[0]));
             days.Add(new Day2(puzzleInputs[1]));
             days.Add(new Day3(puzzleInputs[2]));
@@ -32,6 +37,10 @@ namespace AdventDisplayer
             days.Add(day5Special);
             days.Add(new Day6(puzzleInputs[5]));
             days.Add(new Day7(puzzleInputs[6]));
+            var day8Special = new Day8(day8Trees);
+            day8Special.ExecTimer = day8OverrideTime;
+            days.Add(day8Special);
+
 
 
             await days.ComputeAll();
